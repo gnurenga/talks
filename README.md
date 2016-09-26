@@ -2,6 +2,8 @@
 
 ## U-boot loader for OS flashing
 
+[uboot-meetup](https://github.com/gnurenga/talks/tree/master/uboot-meetup)
+
 This talk is based on my understanding about bootrom which
 is helpful in downloading compiled firmware in to a Micro-controller.
 How I related bootrom  while learning U-bootloader.
