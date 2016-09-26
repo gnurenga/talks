@@ -8,4 +8,4 @@ How I related bootrom  while learning U-bootloader.
 Explained about my zigbee firmware update project.
 This talk gives an Analogy between BootRom and Boot-loader(U-boot).
 
-I gave this talk @zilogic-systems during in U-Boot meetup.
+I gave this talk @zilogic-systems during U-Boot meetup.
