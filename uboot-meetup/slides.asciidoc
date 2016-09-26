@@ -1,8 +1,24 @@
 U-boot in OS flashing
 =====================
+:author: Rengaraj
+:backend: slidy
+:email: sakthirengaraj@gmail.com
+:Date: 24th September, 2016
+
 
 Microcontroller firmware flashing
 ---------------------------------
+
+I have experience in using MicroController
+I have following question when i started learning U-bootloader.
+
+  * How microcontrollers are loaded with new firmware ?
+  * How Programmers are used to flash controller ?
+  * What is present inside Microncontroller to flash firmware ?
+
+The one word answer for this BootRom.
+
+  * Now how bootrom is differ from bootloader ?
 
 How we are flashing firmware in Microntroller ?
 -----------------------------------------------
@@ -15,10 +31,60 @@ How we are flashing firmware in Microntroller ?
 Various ways of flashing firmware in Microcontroller.
 -----------------------------------------------------
 
-image::diagrams/mcu-flashing.png[align="center"]
+image::diagrams/mcu-flashing-firmware.png[align="center"]
 
  * ISP.
  * IAP.
  * JTAG.
  * Flash mount.
 
+My Experience with writing Zigbee firmware update code
+------------------------------------------------------
+
+ * The task is to right a Zigbee firmware programmer to flash firmware in
+ to Zigbee SoC.
+ * There is a Bootloader present inside Zigbee which is called EmberBootloader.
+ * To get the bootloader prompt,
+   * Reset the board
+   * set DTR high and RTS low.
+   *  set Serial break for 2second
+   * clear serial break
+   * set the baudrate to 115200
+   * send carriage return to enter in to bootloader prompt
+ * To flash the new firmware we need to use xmodem protocol.
+ * The programmer send firmware packets using Xmodem.
+ * The analogy is here bootloader act as a server and programmer act as a client.
+
+U-boot loader in OS flashing
+----------------------------
+
+image::diagrams/uboot-flashing-os.png[align="center"]
+
+ * Assume now ubootloader is available in a non-volatile memory,
+ and we are in u-boot prompt.
+ * u-boot can download kernel and ramdisk image using tftp and write that
+ to any one of the following location, SDRAM, NAND, NOR, SPI Flash
+ * This download can be done using tftp client, ftp client.
+ * Some times rootfs is mounted via NFS server using NFS client in uboot.
+ * In case of MicroProcessor U-bootloader act as a client and server like
+ TFTP, ftp and NFS will be at host system.
+
+Conclusion
+----------
+
+ * In case of microcontroller bootRom act as a Server and Programmer act as
+ a client in host side.
+ * In case of microprocessor Bootloader act as a Client and Server(tftp or ftp) sits in the host.
+ * BootRom code is not modifiable.
+ * Bootloader code can be Upgraded if any bug fix happen.
+
+Note: This presentation is an Analogy from my understanding.
+Some points will definitely defer when using in realworld.
+I hope this slides will help to some one who is getting started.
+
+Credits
+-------
+
+  * http://processors.wiki.ti.com/index.php/Booting_Linux_kernel_using_U-Boot
+  * https://www.ibm.com/developerworks/library/l-linuxboot/
+  * http://www.slideshare.net/HouchengLin/uboot-startup-sequence
