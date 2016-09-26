@@ -1,0 +1,24 @@
+U-boot in OS flashing
+=====================
+
+Microcontroller firmware flashing
+---------------------------------
+
+How we are flashing firmware in Microntroller ?
+-----------------------------------------------
+
+ * we flash code using a programmer.
+ * Programmer talk with bootrom code before flashing firmware.
+ * Here the programmer act as a client and the bootrom code act as a server(analogy).
+ * If bootrom understand the commands from programmer then it accept the file.
+
+Various ways of flashing firmware in Microcontroller.
+-----------------------------------------------------
+
+image::diagrams/mcu-flashing.png[align="center"]
+
+ * ISP.
+ * IAP.
+ * JTAG.
+ * Flash mount.
+
