@@ -1,5 +1,23 @@
 # Talks
 
+## Building Slides
+
+Each talk will have a directory, with talk slides, makefile and images.
+#### Dependencies for building slides
+ * dia
+ * asciidoc
+
+* Clone the reposiotory
+
+for example
+```
+$ git clone https://github.com/gnurenga/talks.git
+$ cd talks/uboot-meetpup
+$ make all
+$ firefox slides.html
+```
+
+
 ## U-boot loader for OS flashing
 
 [uboot-meetup](https://github.com/gnurenga/talks/tree/master/uboot-meetup)
