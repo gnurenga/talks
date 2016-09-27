@@ -1,0 +1,68 @@
+Python Extended Window Manager Hints 
+===================================
+:author:	rengaraj
+:max-width:	45em
+:duration:      20
+
+EWMH is a spec used by window manager to handle user input.
+Say example Maximize, Full Screen ... etc
+
+
+== Display Server
+
+.Display Server Block
+image::diagrams/displayserver.png[align="center"]
+
+== What is EWMH ?
+
+
+ This spec defines the interaction between window manager and application.
+    
+    * Root Window Properties
+----      
+__NET_CLIENT_LIST
+__NET_NUMBER_OF_DESKTOPS
+----  
+    * Root Window Messages
+----    
+  _NET_CLOSE_WINDOW
+      _NET_MOVERESIZE_WINDOW
+      _NET_WM_MOVERESIZE
+----    
+* Application Window Properties
+----
+    _NET_WM_NAME
+    _NET_WM_VISIBLE_NAME
+    _NET_WM_ICON_NAME
+    _NET_WM_VISIBLE_ICON_NAME
+    _NET_WM_DESKTOP
+    _NET_WM_WINDOW_TYPE
+    _NET_WM_STATE
+----
+== PyEWMH
+
+ * PyEWMH is a Python way of EWMH
+ * It is a library used to manage windows.
+ * Any EWMH complaint window manager can be controlled using
+the application built on PyEWMH.
+
+== Example 1 Get Client list
+
+[source, python]
+----
+include::src/example1.py[]
+----
+== Example 2 Get Window name
+
+[source, python]
+----
+include::src/example2.py[]
+----
+== Example 3 Controlling a window using user input
+
+[source, python]
+----
+include::src/example3.py[]
+----
+
+== That's It ... Any ???
