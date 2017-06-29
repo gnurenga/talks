@@ -1,0 +1,107 @@
+= RobotFrame work in Automation testing
+rengaraj <sakthirengaraj@gmail.com>
+
+== Testing
+
+=== Overview
+
+* Why we do testing ?
+* What is product requirement ?
+
+=== Need for Automation
+
+* Testing becomes boring if it is monotonous
+* Long hour testing is possible with Automation
+* Automation testing with good report will
+help to deliver a good product
+
+== Today's session
+
+=== We are going to see
+    
+* Requirement 
+* About Remote Power Supply
+* Testing the remote power supply manually
+* Testing the remote power supply using Robot framework
+
+=== Requirements
+
+* Remote power supply should be able turn on/off remotely
+* Remote power supply status should also be available remotely
+
+=== About RPS
+* RPS is a remotely controlled power supply unit 
+using http protocol
+* It uses get and post method with query string
+* Demo time
+
+=== Manual testing
+
+* Demo
+
+== Automate manual test cases
+
+=== Derive the test cases
+
+* Test Case 1: Turn on Power supply 1 remotely
+* Test Case 2: Verify power supply 1 is on
+
+=== Writing the Test Library
+[source, python]
+----
+include::../library/rps/commands.py[]
+----
+=== Writing Keywords from the test library
+
+----
+*** Keywords ***
+RPS send commands
+    [Arguments]    ${command}    ${port}    ${state}
+    ${output}=    Send cmds    ${command}  ${port}  ${state}
+    [return]    ${output}
+
+RPS get Power
+    [Arguments]    ${command}
+    ${output}=    Send cmds    ${command}
+    [return]    ${output}
+
+----
+=== Writing test cases
+
+----
+*** Test Cases ***
+Turn on Power supply 3 remotely
+     ${out}=    RPS send commands     SetPower  2  1
+     Should be equal    ${out}  ${True}
+
+Verify power supply 3 is on
+    ${out}=     RPS get power    GetPower
+    should contain    ${out}  P62=1
+
+Turn off Power supply 3 remotely
+     ${out}=    RPS send commands     SetPower  2  0
+     Should be equal    ${out}  ${True}
+
+Verify power supply 3 is off
+    ${out}=     RPS get power    GetPower
+    should contain    ${out}  P62=0
+----
+
+=== RF test arch
+image::figures/architecture-big.png[width="50%",align="center"]
+
+=== RPS test arch
+image::figures/rps-test-arch.png[width="30%",align="center"]
+
+=== Things which i have not covered
+
+* Test setup
+* Test teardown
+* Remote test library
+
+=== Credits 
+
+* Robot framework 
+* asciidoc for slides
+
+== Thank you
