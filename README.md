@@ -39,6 +39,6 @@ I gave this talk @zilogic-systems during U-Boot meetup.
 ## Robot frame work in automation testing
 
 [Robot-frame-work-intro](http://github.com/gnurenga/talks/tree/master/robot-framework-intro)
-This talk was give at chennaipy on June 24th.
+I gave this talk was  at chennaipy on June 24th.
 It explains about how we can automate test cases using 
 robot frame work. 
