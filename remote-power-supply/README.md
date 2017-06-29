@@ -23,11 +23,11 @@ Say for example
 
 ### To Turn on Power supply 1 
 
-* http://user:password@localhost/Set.Cmd?CMD=SetPower&P60=1
+* http://user:password@localhost/SetCmd?CMD=SetPower&P60=1
 
 ### To get the status of all port
 
-* http://user:password@localhost/Set.Cmd?CMD=GetPower
+* http://user:password@localhost/SetCmd?CMD=GetPower
  
 ## How to run ?
 
