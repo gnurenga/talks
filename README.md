@@ -42,3 +42,8 @@ I gave this talk @zilogic-systems during U-Boot meetup.
 I gave this talk  at chennaipy on June 24th, 2017.
 It explains about how we can automate test cases using 
 robot frame work. 
+
+## Credits
+
+* Stylesheets from - https://github.com/zilogic-systems/workshop-sessions
+* asciidoc for slides - http://www.methods.co.nz/asciidoc/
