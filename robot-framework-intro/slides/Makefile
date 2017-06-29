@@ -1,4 +1,4 @@
-TOPDIR = ..
+TOPDIR = ../..
 
 images_dia = $(wildcard figures/*.dia)
 images_png = $(images_dia:.dia=.png)
