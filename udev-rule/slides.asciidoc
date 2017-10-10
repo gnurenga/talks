@@ -1,0 +1,138 @@
+= Udev Rules
+Rengaraj
+
+== Remote Test Setup
+
+=== Visualizing the setup
+image::figures/remote-test-setup.png[width="70%",align="center"]
+
+== Issue
+
+=== Visualizing the problem 
+image::figures/dev-file.png[width="20%", align="center"]
+
+=== Diagram2
+image::figures/dev-file1.png[width="20%", align="center"]
+
+== How to solve this issue ?
+
+=== Persistent device name
+
+* We can make device name static.
+* Udev helps us to make the device file name static
+* We need to write rule for each device to give
+a static name.
+
+== Udev
+
+=== Device manager
+
+* Udev is a device manager daemon.
+* Udev autoload the module in to the kernel
+when ever a device is hot plugged.
+
+
+== How udev works
+
+=== Working of Udev
+
+* When ever a device is detected Kernel notifies the
+udev
+* Udev modprobe the corresponding driver using modalias.
+* Module alias is nothing but device to driver mapping.
+
+
+=== Udev Rules
+
+ * When ever an event occur (device is detected) kernel
+inform udevd.
+ * The responses to the events are configurable in rules
+ * The rule files are taken from `/etc/udev/rules.d`
+
+=== How to write rules ?
+
+* Rules are all one line
+* Rules have "matches" and "actions"
+* == or != operator
+* =
+* For a single rule we can have multiple matches using
+device attributes.
+
+.Example
+----
+BUS=="usb"
+NAME="vvdndev0"
+----
+
+.Example rule
+----
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="1c:1b:0d:7d:b3:8a", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="enp*", NAME="eth0"
+----
+
+== Udev Rule for the test setup
+
+=== VendorID and ProductID
+
+* We started writing udev rule with Vendor ID product ID
+* The problem is not all the device have Unique IDs
+* We want a Unique parameter so that device names wont
+conflict.
+
+=== USB Linux Sysfs structure
+
+* USB sysfs structure as matching parameter
+
+.Sysfs
+----
+$ ls  /sys/bus/usb/devices/
+1-0:1.0      1-1.3        1-1.3.1:1.0  1-1:1.0
+1-1          1-1.3.1      1-1.3:1.0    usb1
+----
+
+* `bus-port.port.port.....:configuration.interface`
+
+.Example:
+----
+KERNEL=="1-1.3.1"
+----
+
+=== Commands used to find the attributes
+
+.Attribute walk
+----
+$ udevadm info --attribute-walk /dev/ttyUSB0 | grep : | grep KERNELS
+----
+
+.Reload config
+----
+$ sudo udevadm control --reload-rules
+----
+
+=== Actual Rule we have written
+
+.99-usb-serial.rules
+----
+SUBSYSTEM=="tty", KERNELS=="1-1.3.1:1.0", SUBSYSTEMS=="usb", SYMLINK+="vvdndev0"
+
+SUBSYSTEM=="tty", KERNELS=="1-1.3.2:1.0", SUBSYSTEMS=="usb", SYMLINK+="vvdndev1"
+----
+
+
+=== Device Files
+
+.Created Device Files in /dev
+
+----
+lrwxrwxrwx 1 root root 7 Aug 28 11:46 /dev/vvdndev0 -> ttyUSB0
+lrwxrwxrwx 1 root root 7 Aug 28 11:38 /dev/vvdndev1 -> ttyUSB1
+----
+
+=== Further Readings
+* http://www.linux-usb.org/FAQ.html
+* https://wiki.debian.org/udev
+* man udevadm
+* man udev
+* modalias
+* Busmodel in Linux
+
+== Thank You
