@@ -1,0 +1,50 @@
+= Thinking Object Oriented
+by Rengaraj
+
+=== About me
+
+* I am rengaraj, I work for VVDN Technologies.
+
+== Jump in to object
+
+=== Nature as Example
+
+* Let us take bird as live example
+
+A bird
+
+* can fly
+* has feathers
+* has peak
+* produces sound
+
+A dove
+
+* Does all the job as bird.
+* has different colors
+* produces different sound
+
+
+=== Block Diagram for bird to dove
+
+image::figures/bird.png[width="50%", align="center"]
+
+== ServerStatus 
+
+=== The problem
+
+* We have 10 different servers
+* Each is for different purpose.
+* When any one is down till the user of the particular server
+reports nobody knows it is down.
+* Network admin job becomes tough.
+* We need a mechanism to report when a server goes down.
+
+=== Requirement
+image::figures/state.png[width="50%", align="center"]
+
+=== Implementation
+
+image::figures/server.png[width="50%", align="center"]
+
+== Thank You
