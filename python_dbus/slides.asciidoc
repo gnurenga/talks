@@ -62,6 +62,8 @@ include::src/client.py[]
 * D-Feet - Shows the object hierarchy exposed by running services, allowing you to call the methods you see.
 * Bustle - Records D-Bus traffic (like dbus-monitor) and shows it as a sequence diagram, with built-in filtering and statistics.
 
+=== Reference
 
+* Python DBus tutorial - https://dbus.freedesktop.org/doc/dbus-python/tutorial.html
 
 == Thank You
