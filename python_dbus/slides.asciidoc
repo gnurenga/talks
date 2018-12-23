@@ -1,0 +1,67 @@
+= Unerstanding DBus using python
+by Rengaraj
+
+== Session covers
+
+=== For todays session
+
+* What is DBus
+* Service Component
+* Client Component
+* Example for DBus client
+* We are not going to see how to write DBus service
+* We are going to see DBus client
+
+== DBus
+
+=== What is DBus ?
+
+* A system bus	for notification from system to user session
+* A session bus used to implement desktop environment such as GNOME and KDE
+* Dbus uses binary protocol
+
+=== Components of DBus
+
+* Message Bus
+* Object path
+* Client
+
+=== Diagramtic representation of Service
+image::figures/service.png[width="70%", align="center"]
+
+=== Diagramatic representation Client 
+image::figures/client_service.png[width="70%", align="center"]
+
+== Example Code
+
+=== service.py
+
+[source, python]
+----
+include::src/service.py[]
+----
+
+
+=== client.py
+
+[source, python]
+----
+include::src/client.py[]
+----
+
+== Tools to debug DBus application
+
+=== Tools
+==== CLI
+
+* dbus-send - To call remote API
+* dbus-monitor - Monitor bus traffic between client and service
+
+==== Graphical
+
+* D-Feet - Shows the object hierarchy exposed by running services, allowing you to call the methods you see.
+* Bustle - Records D-Bus traffic (like dbus-monitor) and shows it as a sequence diagram, with built-in filtering and statistics.
+
+
+
+== Thank You
