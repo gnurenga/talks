@@ -1,0 +1,50 @@
+= Testing Embedded System using Robot Framework
+by Rengaraj
+
+=== Motivation
+
+* Do you need a fire to test fire alarm during development phase ?
+
+=== TI Launchpad
+
+image::figures/ti.jpg[width="50%", align="center"]
+
+
+
+== Application
+
+=== Door Sensor application
+* Reed switch will be used as a sensor
+* Reed switch have two parts one is magnet
+other one is switch
+* Magnet part will be connect to the door,
+the switch part will be connected to the door frame
+
+=== Application Block Diagram 
+
+image::figures/app.png[width="50%", align="center"]
+
+
+=== Door is open
+
+image::figures/door-open.png[width="50%", align="center"]
+
+=== Door is closed
+
+image::figures/door-close.png[width="50%", align="center"]
+
+
+=== Test setup door close
+
+image::figures/robot-door-close.png[width="50%", align="center"]
+
+=== Test Setup door open
+
+image::figures/robot-door-open.png[width="50%", align="center"]
+
+=== Test setup validating the data
+
+image::figures/robot-getting.png[width="50%", align="center"]
+
+== Demo
+== Thank You
