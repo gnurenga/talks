@@ -1,0 +1,13 @@
+Hi
+
+{{month}} meetup is on {{day}} of this month.  If you are interested in doing a
+talk, reply with your talk title and description to this thread.
+
+{{format}}
+
+Please check our event page.
+
+Regards
+Rengaraj
+
+[1].{{event}}

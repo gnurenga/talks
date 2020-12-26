@@ -1,0 +1,1 @@
+{mac: aa:bb:cc:dd:ee:ff, timestamp: 2020:12:26:1056000, username: hello}{mac: aa:bb:cc:dd:ee:f1, timestamp: 2020:12:26:1056010, username: chennai}{mac: aa:aa:cc:dd:ee:f2, timestamp: 2020:12:26:1056010, username: rajaplayam}

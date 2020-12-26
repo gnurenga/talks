@@ -1,0 +1,150 @@
+= Data Types in Python
+Rengaraj
+
+==  Data Types 
+
+=== Why data types ?
+
+Data Types are used to
+
+* helps the compiler or intreperter to allocate memory 
+* categorize different data.
+
+Python is a
+
+* Dynamically typed language
+** A variable type is defined at runtime.
+** In Python Everything is  object
+
+=== Various Data Types in Python
+
+* Numbers - int, float, complex
+* Sequences - str, list, tuples, bytes, bytearray
+* Maps - dict
+* Sets - set, frozenset
+
+== Numbers
+
+
+=== Integer, Float, Complex
+
+----
+>>> value = 1
+>>> type(value)
+<class 'int'>
+
+>>> value = 1.1
+>>> type(value)
+<class 'float'>
+
+>>> value = 1 + 2j
+>>> type(value)
+<class 'complex'>
+>>> 
+----
+
+
+== Sequences
+
+=== Strings
+
+----
+>>> value = "hello"
+>>> len(value)
+5
+>>> value
+'hello'
+>>> value[0:5]
+'hello'
+>>> value[0:3]
+'hel'
+>>> 
+----
+
+=== String Methods
+
+* split()
+* join()
+* upper()
+* lower()
+* strip()
+  
+
+=== Lists
+
+----
+>>> value = [1,2,3,4,5]
+>>> value
+[1, 2, 3, 4, 5]
+>>> value[0]
+1
+>>> value[0:5]
+[1, 2, 3, 4, 5]
+>>> 
+----
+
+=== List Methods
+
+* append()
+* copy()
+* pop()
+* insert()
+  
+
+=== Tuples
+
+----
+>>> value = 1,2,3
+>>> value
+(1, 2, 3)
+>>> type(value)
+<class 'tuple'>
+>>> value[0] = 1
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+>>> value[0]
+1
+>>> 
+----
+
+=== Tuple methods
+
+* count()
+* index()
+
+
+== Maps
+
+=== Dictionary
+
+----
+>>> value = {}
+
+>>> value['red'] = 255
+
+>>> value['blue'] = 255
+
+>>> value['green'] = 255
+
+>>> value
+{'red': 255, 'blue': 255, 'green': 255}
+>>> type(value)
+<class 'dict'>
+
+----
+
+=== Dict methods
+
+* get()
+* items()
+* keys()
+* values()
+
+=== Not covered
+
+* bytes, bytearrays
+* set, frozenset
+
+
+== Thank you
