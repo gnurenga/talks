@@ -7,7 +7,7 @@ rengaraj <sakthirengaraj@gmail.com>
 
 * Giving a bird eye view on actuall testing
 * Test using Robot
-* Understand why it is failed even though log show passed
+* let us Understand why it is failed even though log show passed
 
 
 === Actuall testing
@@ -17,71 +17,23 @@ rengaraj <sakthirengaraj@gmail.com>
 
 === Testing
 
-* Map the user in the gateway
-* Send traffic from traffigenerator using wget
-* Check the logs traffic allowed in the gate way
+* map the user 
+* send traffic from traffigenerator using wget
+* check the logs traffic allowed in the gate way
 
 == Demo
 
-=== Understand why it is failed even though log show passed
+=== let us Understand why it is failed even though log show passed
+* In the TRACE log it is clearly showing wget failed to download
+* Then there is no traffic
+* If you run it with out TRACE we always think there is no issue
+
+=== Solution
+* Alway Check for errors after running any operting sytem command either local
+or remote system using ssh from robot
+* Irrespective of operating system command after executing in any keyword
+always check for errors.
+* Errors due to system can be detected and solved easily using return codes
+or validating the stderror message.
 
 
-
-
-----
-include::../library/rps/commands.py[]
-----
-=== Writing Keywords from the test library
-
-----
-*** Keywords ***
-RPS send commands
-    [Arguments]    ${command}    ${port}    ${state}
-    ${output}=    Send cmds    ${command}  ${port}  ${state}
-    [return]    ${output}
-
-RPS get Power
-    [Arguments]    ${command}
-    ${output}=    Send cmds    ${command}
-    [return]    ${output}
-
-----
-=== Writing test cases
-
-----
-*** Test Cases ***
-Turn on Power supply 3 remotely
-     ${out}=    RPS send commands     SetPower  2  1
-     Should be equal    ${out}  ${True}
-
-Verify power supply 3 is on
-    ${out}=     RPS get power    GetPower
-    should contain    ${out}  P62=1
-
-Turn off Power supply 3 remotely
-     ${out}=    RPS send commands     SetPower  2  0
-     Should be equal    ${out}  ${True}
-
-Verify power supply 3 is off
-    ${out}=     RPS get power    GetPower
-    should contain    ${out}  P62=0
-----
-
-=== RF test arch
-image::figures/architecture-big.png[width="50%",align="center"]
-
-=== RPS test arch
-image::figures/rps-test-arch.png[width="30%",align="center"]
-
-=== Things which i have not covered
-
-* Test setup
-* Test teardown
-* Remote test library
-
-=== Credits 
-
-* Robot framework 
-* asciidoc for slides
-
-== Thank you
