@@ -1,0 +1,144 @@
+= Build Diessect Network packets
+
+
+
+== About me
+
+=== ...
+* Rengaraj
+  - Work for Intelsat
+  - I have been comming to chenniapy since 2011
+  - I have experience in using Python device Interfacing
+
+* Reachme
+ - x: @sakthirengaraj
+ - mail: sakthirengaraj@gmail.com
+ 
+== Scapy
+
+=== About
+
+  * Its a powerfull framework to sniff, send, dissect or create network packets.
+  * We can use this for scanning, sending probe requests or network attacks.
+  * Scapy is more powerfull than other tools available for networking.
+
+=== OSI | Scapy view
+
+-- Open the image manually
+
+=== Let start with IP
+
+[source,python]
+------
+>>> IP()
+<IP  |>
+>>>
+
+------
+
+
+=== Build the IP layer alone
+
+[source,python]
+------
+>>> target = "www.example.com/30"
+>>> ip = IP(dst = target)
+>>> [p for p in ip]
+[<IP  dst=49.207.35.160 |>, <IP  dst=49.207.35.161 |>, <IP  dst=49.207.35.162 |>,\
+<IP  dst=49.207.35.163 |>]
+>>> 
+
+------
+
+=== Let us add one more layer
+
+[source,python]
+------
+>>> packet = Ether()/IP(dst = target)/ TCP()
+>>> packet.summary()
+'Ether / IP / TCP 192.168.0.163:ftp_data > Net("www.example.com/30"):http S'
+
+------
+
+
+=== Wait we can build packets on the fly with different fiels
+
+[source,python]
+------
+>>> for packet in IP()/TCP(dport = [22, 80, 443]):
+...     print(packet)
+... 
+IP / TCP 127.0.0.1:ftp_data > 127.0.0.1:ssh S
+IP / TCP 127.0.0.1:ftp_data > 127.0.0.1:http S
+IP / TCP 127.0.0.1:ftp_data > 127.0.0.1:https S
+>>> 
+------
+
+
+
+
+=== How do I send packets to another network ?
+
+[source,python]
+----
+>>> p = sr1(IP(dst="8.8.8.8") / UDP() / DNS())
+Begin emission
+
+Finished sending 1 packets
+*
+Received 1 packets, got 1 answers, remaining 0 packets
+>>> 
+----
+
+[source,python]
+-----
+>>> p[DNS].an
+[<DNSRR  rrname=b'www.example.com.' type=CNAME cacheflush=0 rclass=IN ttl=187 rdata=b'www.example.com-v4.edgesuite.net.' |>, <DNSRR  rrname=b'www.example.com-v4.edgesuite.net.' type=CNAME cacheflush=0 rclass=IN ttl=18933 rdata=b'a1422.dscr.akamai.net.' |>, <DNSRR  rrname=b'a1422.dscr.akamai.net.' type=A cacheflush=0 rclass=IN ttl=20 rdata=23.199.69.186 |>, <DNSRR  rrname=b'a1422.dscr.akamai.net.' type=A cacheflush=0 rclass=IN ttl=20 rdata=23.199.69.187 |>]
+>>> 
+
+-----
+
+=== It is Time to capture some packets
+
+[source, python]
+----
+>>> packets = sniff(count = 5, filter = 'arp')
+>>> packets.summary()
+Ether / ARP who has 192.168.0.163 says 192.168.0.1 / Padding
+Ether / ARP is at 48:89:e7:34:ee:82 says 192.168.0.163
+Ether / ARP who has 192.168.0.195 says 192.168.0.1 / Padding
+Ether / ARP who has 192.168.0.1 says 192.168.0.195
+Ether / ARP who has 192.168.0.163 says 192.168.0.1 / Padding
+
+>>> packets[3].show()
+###[ Ethernet ]###
+  dst       = ff:ff:ff:ff:ff:ff
+  src       = d2:68:34:43:f8:c7
+  type      = ARP
+###[ ARP ]###
+     hwtype    = Ethernet (10Mb)
+     ptype     = IPv4
+     hwlen     = 6
+     plen      = 4
+     op        = who-has
+     hwsrc     = d2:68:34:43:f8:c7
+     psrc      = 192.168.0.195
+     hwdst     = 00:00:00:00:00:00
+     pdst      = 192.168.0.1
+----
+
+=== Let us build packets and send each packets
+
+- We are going to visualise in parallel in wireshark
+
+[source,python]
+----
+>>> packets = [p for p in IP(dst = "www.example.com/30")/TCP(dport = [22, 80, 443])]
+>>> send(packets)
+----
+
+== Thank you
+
+=== Credits
+
+* https://scapy.readthedocs.io/en/latest/
