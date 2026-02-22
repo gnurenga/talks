@@ -1,0 +1,42 @@
+= Welcome to Chennaipy 
+
+=== About Chennaipy
+
+* Since Jan25, 2005
+* Yahoo Group, Google Groups and finally we have our own website
+and meetup page.
+* We are open community encoruage Knowldge sharing on Python and
+tools written using python
+
+
+=== What meetup is all about ?
+
+* Usually we meet at an auditorium or meeting hall
+* Covid changed the pattern
+* Meetup is networking of people who have same interest
+on sharing knowledge and ideas on Python
+
+
+
+=== Schedule
+
+* Python in ETL
+By Deepak - 20 mins
+
+* CRC Computation using Python
+By Ashok - 20 mins
+
+
+
+=== Ending Notes
+
+* www.chennaipy.org
+* If you are new to Chennaipy Please subscribe to our mailing list.
+* Please feel free to open discussion threads in mailing list
+* we have github page where all our website content and project source code
+are available.
+* If you are  developer or a budding developer, please feel free to contribute to
+chennaipy website.
+
+== Thank you 
+

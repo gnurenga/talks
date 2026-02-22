@@ -1,0 +1,58 @@
+= Generators
+by Rengaraj
+
+== Session covers
+
+=== For todays session
+* Normal File operation 
+* File operation using generators function
+
+
+== File operations
+
+=== Normal Functions
+
+* In normal file operation, function reads the entire file in to memory
+and returns an object with all content
+* For small files we no need to bother about the memory since it will access less memory
+
+=== Example withour generator
+
+[source, python]
+----
+include::src/normal.py[]
+----
+
+=== Generator Functions
+* The generator function reads the file line by line and yield each line as separate object
+
+=== Example with generator
+[source, python]
+----
+include::src/using_generators.py[]
+----
+
+=== Comparing the efficiancy
+[source, python]
+----
+include::src/measuring_usage.py[]
+----
+
+=== Output
+
+----
+Memory usage of normal function: 96.61328125 MB
+Memory usage of generator function: 0.0 MB
+Normal function time: 6.070834238000316
+Generator function time: 4.575615089001076
+----
+
+=== Summary
+
+* A generator function is a better approach for processing large files
+* A normal function can be useful for small files that can easily fit in to memory
+
+=== Credits
+* Python Cookbook -- Generators concepts
+
+== Thankyou
